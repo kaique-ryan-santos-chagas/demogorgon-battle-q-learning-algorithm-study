@@ -1,6 +1,6 @@
-<center>
+<p align="center">
   # Stranger Things - Demogorgon Battle
-</center>
+</p>
 
 ## Conceito
 
