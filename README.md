@@ -15,6 +15,6 @@ O agente aprende através dos estados e ações. Os estados consistem basicament
 
 ## Desafios 
 
-O grande desafio é equilibrar o jogo a ponto da IA não quebrar o sistema de combate se tornando invencível para o jogador... O grande ponto chave do algoritmo de Q-Learning é quando a máquina encontra a política perfeita para vencer o desafio imposto para ela, nisso a IA acaba achando a estratégia perfeita para derrotar o jogador após o treinamento do agente. 
+O grande desafio é equilibrar o jogo a ponto da IA não quebrar o sistema de combate se tornando invencível para o jogador... O grande ponto chave do algoritmo de Q-Learning é quando a máquina encontra a política perfeita para vencer o desafio imposto para ela, nisso a IA acaba achando a estratégia perfeita para derrotar o jogador após o treinamento do agente, e isso tem dificultado a diversão ao jogar o jogo, portanto, quando aplicado a técnica de aprendizado por reforço em jogos digitais, o primordial é encontrar a balança entre a arte e o conceito matemático. 
 
 <img src="https://github.com/user-attachments/assets/c9a5d343-9c89-4a1b-986c-aa5ea2fdaa78" />
