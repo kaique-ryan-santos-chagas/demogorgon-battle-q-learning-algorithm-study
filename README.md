@@ -1,4 +1,4 @@
-# <p align="center">Stranger Things - Demogorgon Battle</p>
+# <p align="center"><img src="https://github.com/user-attachments/assets/24b7b946-491a-4a1f-a30d-db094610b50e" /></p>
 
 ## Conceito
 
