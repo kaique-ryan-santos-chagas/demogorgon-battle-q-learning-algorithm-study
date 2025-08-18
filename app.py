@@ -8,19 +8,18 @@ import time
 alpha = 0.1     # taxa de aprendizado 
 gamma = 0.9     # fator de desconto
 epsilon = 0.1   # taxa de exploração
+d20 = 20       # dado de 20 lados
 
 # Estados e ações
 
 states = [(hooper_life, demo_life) for hooper_life in range(0, 110, 10) for demo_life in range(0, 110, 10)]
-actions = ['ataque', 'cura', 'esquivar']
+actions = ['ataque', 'cura', 'esquivar'] 
 q_table = {}
 
 # Inicializando a Q-table
 
 for state in states:
     q_table[state] = {action: 0.0 for action in actions}
-
-print(q_table)
 
 def choose_action(state):
     if random.uniform(0, 1) < epsilon:
@@ -30,19 +29,30 @@ def choose_action(state):
 
 def take_action(player_action, agent_action, hopper_hp, demo_hp): 
 
-    if player_action == 'ataque' and agent_action != 'esquivar':
-        demo_hp -= 20
-    elif player_action == 'cura':
-        hopper_hp = min(hopper_hp + 10, 100)
-    elif player_action == 'esquivar':
-        pass
+    print('Rolando d20 do Hopper...')
+    rol_hopper = random.randint(1, d20) 
+    print(f'Resultado: {rol_hopper}')
+    print('Rolando d20 do Demogorgon...')
+    rol_demo = random.randint(1, d20) 
+    print(f'Resultado: {rol_demo}')
 
-    if agent_action == 'ataque' and player_action != 'esquivar':
-        hopper_hp -= 20
-    elif agent_action == 'cura':
-        demo_hp = min(demo_hp + 10, 100)
-    elif agent_action == 'esquivar':
+    if player_action == 'ataque' and agent_action != 'esquivar' and rol_hopper > 10:
+        demo_hp -= 20
+    if player_action == 'cura' and rol_hopper > 10:
+        hopper_hp = min(hopper_hp + 10, 100)
+    if player_action == 'esquivar' and agent_action == 'ataque' and rol_hopper > 10:
         pass
+    elif player_action == 'esquivar' and agent_action == 'ataque' and rol_hopper < 10:
+        hopper_hp -= 20
+
+    if agent_action == 'ataque' and player_action != 'esquivar' and rol_demo > 10:
+        hopper_hp -= 20
+    if agent_action == 'cura' and rol_demo > 10:
+        demo_hp = min(demo_hp + 10, 100)
+    if agent_action == 'esquivar' and player_action == 'ataque' and rol_demo > 10:
+        pass
+    elif agent_action == 'esquivar' and player_action == 'ataque' and rol_demo < 10:
+        demo_hp -= 20
     
     hopper_hp = max(hopper_hp, 0)
     demo_hp = max(demo_hp, 0)
@@ -50,7 +60,7 @@ def take_action(player_action, agent_action, hopper_hp, demo_hp):
     return hopper_hp, demo_hp
 
 
-def get_reward(hopper_hp, demo_hp, done):
+def get_reward(hopper_hp, demo_hp, done): 
     if done:
         if hopper_hp <= 0:
             return 100
